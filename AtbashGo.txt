@@ -1,0 +1,32 @@
+package main
+
+import (
+	"fmt"
+)
+
+func atbash(text rune) rune {
+	if text >= 'a' && text <= 'z' {
+		return 'z' - (text - 'a')
+	} else if text >= 'A' && text <= 'Z' {
+		return 'Z' - (text - 'A')
+	} else if text >= 'а' && text <= 'я' {
+		return 'я' - (text - 'а')
+	} else if text >= 'А' && text <= 'Я' {
+		return 'Я' - (text - 'А')
+	}
+	return text
+}
+
+func main() {
+	var result string
+	var inputText string
+
+	fmt.Print("Введите текст для шифра: ")
+	fmt.Scanln(&inputText)
+
+	for _, char := range inputText {
+		result += string(atbash(char))
+	}
+
+	fmt.Println(result)
+}
